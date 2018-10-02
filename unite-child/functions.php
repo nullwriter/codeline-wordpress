@@ -199,3 +199,45 @@ function film_taxonomies() {
 
 }
 add_action( 'init', 'film_taxonomies');
+
+function film_list_func( $atts ){
+	global $wp_query, $post;
+
+	$atts = shortcode_atts( array(
+		'limit' => ''
+	), $atts );
+
+	if (!isset($atts['limit']) || empty($atts['limit'])) {
+		$atts['limit'] = 5;
+	}
+
+	$loop = new WP_Query( array(
+		'posts_per_page'    => $atts['limit'],
+		'post_type'         => 'film',
+		'orderby'           => 'id',
+		'order'             => 'ASC'
+	) );
+
+	if( ! $loop->have_posts() ) {
+		return 'no';
+	}
+
+	?>
+
+	<div><h3>Latest Films</h3></div>
+
+	<?php
+
+	while( $loop->have_posts() ) {
+		$loop->the_post();
+		echo '<div class="film-link-sidebar"><a href="'.get_the_permalink().'">';
+		echo the_title().'</a> - '.strip_tags(get_the_term_list(get_the_ID(), 'film-genre', '', ' / ')).'</div>';
+	}
+
+	wp_reset_postdata();
+}
+
+function register_shortcodes() {
+	add_shortcode( 'film_list', 'film_list_func' );
+}
+add_action( 'init', 'register_shortcodes');
