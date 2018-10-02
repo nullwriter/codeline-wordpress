@@ -96,7 +96,7 @@ function film_taxonomies() {
 	);
 
 	$label =  array(
-		'name'                       => _x( 'Countrie', 'taxonomy general name' ),
+		'name'                       => _x( 'Countries', 'taxonomy general name' ),
 		'singular_name'              => _x( 'Country', 'taxonomy singular name' ),
 		'search_items'               => __( 'Search Countries' ),
 		'all_items'                  => __( 'All Countries' ),
