@@ -60,3 +60,142 @@ function film_cpt() {
 	register_post_type( 'film', $args );
 }
 add_action( 'init', 'film_cpt');
+
+function film_taxonomies() {
+
+	$label =  array(
+		'name'                       => _x( 'Genres', 'taxonomy general name' ),
+		'singular_name'              => _x( 'Genre', 'taxonomy singular name' ),
+		'search_items'               => __( 'Search Genres' ),
+		'all_items'                  => __( 'All Genres' ),
+		'parent_item'                => __( 'Parent Genre' ),
+		'parent_item_colon'          => __( 'Parent Genre:' ),
+		'edit_item'                  => __( 'Edit Genre' ),
+		'update_item'                => __( 'Update Genre' ),
+		'add_new_item'               => __( 'Add New Genre' ),
+		'new_item_name'              => __( 'New Genre Name' ),
+		'separate_items_with_commas' => __( 'Separate Genre with commas' ),
+		'add_or_remove_items'        => __( 'Add or remove Genres' ),
+		'choose_from_most_used'      => __( 'Choose from the most used Genres' ),
+		'not_found'                  => __( 'No Genres found.' ),
+		'menu_name'                  => __( 'Genres' ),
+	);
+
+	$args_genre  = array(
+		'hierarchical'          => true,
+		'labels'                => $label,
+		'show_ui'               => true,
+		'show_admin_column'     => true,
+		//'update_count_callback' => '_update_post_term_count',
+		'query_var'             => true,
+		// 'show_in_nav_menus'  => false,
+		'public'                => true,
+		'publicly_queryable'    => true,
+		'has_archive'           => true,
+		'rewrite'               => array( 'slug' => 'film-genre' ),
+	);
+
+	$label =  array(
+		'name'                       => _x( 'Countrie', 'taxonomy general name' ),
+		'singular_name'              => _x( 'Country', 'taxonomy singular name' ),
+		'search_items'               => __( 'Search Countries' ),
+		'all_items'                  => __( 'All Countries' ),
+		'parent_item'                => __( 'Parent Country' ),
+		'parent_item_colon'          => __( 'Parent Country:' ),
+		'edit_item'                  => __( 'Edit Country' ),
+		'update_item'                => __( 'Update Country' ),
+		'add_new_item'               => __( 'Add New Country' ),
+		'new_item_name'              => __( 'New Country Name' ),
+		'separate_items_with_commas' => __( 'Separate Country with commas' ),
+		'add_or_remove_items'        => __( 'Add or remove Countries' ),
+		'choose_from_most_used'      => __( 'Choose from the most used Countries' ),
+		'not_found'                  => __( 'No Country found.' ),
+		'menu_name'                  => __( 'Countries' ),
+	);
+
+	$args_country  = array(
+		'hierarchical'          => true,
+		'labels'                => $label,
+		'show_ui'               => true,
+		'show_admin_column'     => true,
+		//'update_count_callback' => '_update_post_term_count',
+		'query_var'             => true,
+		// 'show_in_nav_menus'  => false,
+		'public'                => true,
+		'publicly_queryable'    => true,
+		'has_archive'           => true,
+		'rewrite'               => array( 'slug' => 'film-country' ),
+	);
+
+	$labels = array(
+		'name'                       => _x( 'Years', 'taxonomy general name' ),
+		'singular_name'              => _x( 'Year', 'taxonomy singular name' ),
+		'search_items'               => __( 'Search Years' ),
+		'all_items'                  => __( 'All Years' ),
+		'parent_item'                => __( 'Parent Year' ),
+		'parent_item_colon'          => __( 'Parent Year:' ),
+		'edit_item'                  => __( 'Edit Year' ),
+		'update_item'                => __( 'Update Year' ),
+		'add_new_item'               => __( 'Add New Year' ),
+		'new_item_name'              => __( 'New Year Name' ),
+		'separate_items_with_commas' => __( 'Separate Year with commas' ),
+		'add_or_remove_items'        => __( 'Add or remove Years' ),
+		'choose_from_most_used'      => __( 'Choose from the most used Years' ),
+		'not_found'                  => __( 'No Years found.' ),
+		'menu_name'                  => __( 'Years' ),
+	);
+
+	$args_year = array(
+		'hierarchical'          => true,
+		'labels'                => $labels,
+		'show_ui'               => true,
+		'show_admin_column'     => true,
+		//'update_count_callback' => '_update_post_term_count',
+		'query_var'             => true,
+		// 'show_in_nav_menus'  => false,
+		'public'                => true,
+		'publicly_queryable'    => true,
+		'has_archive'           => true,
+		'rewrite'               => array( 'slug' => 'film-year' ),
+	);
+
+	$labels = array(
+		'name'                       => _x( 'Actors', 'taxonomy general name' ),
+		'singular_name'              => _x( 'Actor', 'taxonomy singular name' ),
+		'search_items'               => __( 'Search Actors' ),
+		'all_items'                  => __( 'All Actors' ),
+		'parent_item'                => __( 'Parent Actor' ),
+		'parent_item_colon'          => __( 'Parent Actor:' ),
+		'edit_item'                  => __( 'Edit Actor' ),
+		'update_item'                => __( 'Update Actor' ),
+		'add_new_item'               => __( 'Add New Actor' ),
+		'new_item_name'              => __( 'New Actor Name' ),
+		'separate_items_with_commas' => __( 'Separate Actor with commas' ),
+		'add_or_remove_items'        => __( 'Add or remove Actors' ),
+		'choose_from_most_used'      => __( 'Choose from the most used Actors' ),
+		'not_found'                  => __( 'No Actors found.' ),
+		'menu_name'                  => __( 'Actors' ),
+	);
+
+	$args_actor = array(
+		'hierarchical'          => true,
+		'labels'                => $labels,
+		'show_ui'               => true,
+		'show_admin_column'     => true,
+		//'update_count_callback' => '_update_post_term_count',
+		'query_var'             => true,
+		// 'show_in_nav_menus'  => false,
+		'public'                => true,
+		'publicly_queryable'    => true,
+		'has_archive'           => true,
+		'rewrite'               => array( 'slug' => 'film-actor' ),
+	);
+
+
+	register_taxonomy( 'film-genre', 'film', $args_genre );
+	register_taxonomy( 'film-country', 'film', $args_country );
+	register_taxonomy( 'film-year', 'film', $args_year );
+	register_taxonomy( 'film-actor', 'film', $args_actor );
+
+}
+add_action( 'init', 'film_taxonomies');
